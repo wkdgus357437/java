@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<img src="../img/망상토끼.png" alt="망상토끼"/>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<properties resource="db.properties"></properties><!-- db.properties 파일알려주기 ..그래야 불러올수 있다-->
+
+
+<typeAliases>
+	<typeAlias type="user.bean.UserDTO" alias="user"/>  <!-- alisa 로 별명을 지어줘서 그 별명을 useMapper type의 이름에 넣어준다-->
+</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" /> <!-- db.properties 파일에 옮겨놓은걸 불러옴 -->
+				<property name="url" value="${jdbc.url}" /> <!-- db.properties 파일에 옮겨놓은걸 불러옴 -->
+				<property name="username" value="${jdbc.username}" /> <!-- db.properties 파일에 옮겨놓은걸 불러옴 -->
+				<property name="password" value="${jdbc.password}" /> <!-- db.properties 파일에 옮겨놓은걸 불러옴 -->
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers> <!-- mappers 알려주기  여러개 가능 resource는 . 안되서 /로 대체함-->
+	<mapper resource="user/dao/userMapper.xml"/>
+	</mappers>
+
+</configuration>

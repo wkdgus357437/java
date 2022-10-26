@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="result(exam08).html">
+		<fieldset>
+			<legend>이름입력하기</legend>
+			<div>
+				<label for="user+name">이름: </label>
+				<input type="text" name="user_name" id="user_name"/>	
+			</div>
+			<br/>
+			<div>
+				<input type="submit" value="입력완료"/> <!-- 여기서 데이터를 가져가는건 submit 뿐이다 -->
+				<input type="reset" value="초기화"/>	<!-- 입력상자 안에 있는 글씨 초기화 해 -->
+				<input type="button" value="입력완료" onclick="javascript:location.href='result.html'"/> 
+				<input type="image" src="../img/ok.png" alt="확인"/> <!-- 자 동으로 이미지를 submit을 한다  -->
+				<input type="image" src="../img/ok.png" alt="확인" onclick="return false;"/> <!-- return false; 단순이미지로 변경(클릭해도 이동되지 않는다) -->
+			</div>
+		</fieldset>
+	</form>
+
+</body>
+</html>
+
+<!-- 
+submit ~action
+ - <form>태그 안에 있는 입력상자의 데이터를 들고 페이지 이동 
+ 
+ button ~onclick
+ 
+ -->
+

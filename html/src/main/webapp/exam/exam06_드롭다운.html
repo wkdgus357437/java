@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<form action="">
+    <h2>회원가입</h2>
+
+    <table border="1" width="400" cellpadding="3" cellspacing="0">
+      <tr>
+        <td width="100" align="center"><label for="user_name">이름</label></td>
+        <td><input type="text" name="user_name" id="user_name" maxlength="10" placeholder="이름 입력"/></td>
+      </tr>
+
+      <tr>
+        <td width="100" align="center"><label for="user_id">아이디</label></td>
+        <td><input type="text" name="user_id" id="user_id" maxlength="5" placeholder="아이디 입력"/></td>
+      </tr>
+
+      <tr>
+        <td width="100" align="center"><label for="user_pwd">비밀번호</label></td>
+        <td><input type="password" name="user_pwd" id="user_pwd" maxlength="20"/></td>
+      </tr>
+
+      <tr>
+        <td width="100" align="center"><label for="user_repwd">재확인</label></td>
+        <td><input type="password" name="user_repwd" id="user_repwd" maxlength="20"/></td>
+      </tr>
+
+      <tr>
+        <td width="100" align="center"><label for="user_gender">성별</label></td>
+        <td>
+          <div>
+          <input type="radio" name="gender" id="gender_m" value="1" checked />
+          <label for="gender_m">남자</label>
+          <input type="radio" name="gender" id="gender_f" value="2" />
+          <label for="genger_f">여자</label>
+        </div>
+      
+      </td>
+      </tr>
+<!---->
+      <tr>
+        <td width="100" align="center">이메일</td>
+        <td><input type="text" name="user_emal1" id="user_email1" maxlength="10" size="15"/>
+         @
+         <input type="text" list="email2" size="15">
+          <datalist id="email2">
+           	  <option selected>직접입력</option>
+           	  <option>gmail.com</option>
+              <option>naver.com</option>
+              <option>daum.com</option>
+            
+          </datalist>
+        </td>
+        
+      </tr>
+<!---->
+      <tr>
+        <td width="100" align="center"><label for="user_tel">핸드폰</label></td>
+        <td><div>
+            <select name="user_tel1" id="user_tel1">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="019">019</option>
+          </select> 
+        - <input type="text" name="user_tel2" id="user_tel2" maxlength="5" size="10"/>
+          
+        - <input type="text" name="user_tel3" id="user_tel3" maxlength="5" size="10"/>
+        </div> 
+      </tr>
+
+      <tr>
+        <td width="100" align="center">주소</td>
+        <td>두번째 칸</td>
+      </tr>
+
+      <tr>
+        <td>마지막 병합</td>
+        <td>마지막 병합</td>
+      </tr>
+
+
+    </table>
+  </form>
+</body>
+</html>
+

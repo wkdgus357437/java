@@ -12,6 +12,9 @@
 //데이터
 int pg = Integer.parseInt(request.getParameter("pg"));
 
+//세션
+String id = (String)session.getAttribute("memId");
+
 //페이징 처리
 int endNum = pg*5;
 int startNum = endNum -4;
@@ -65,16 +68,22 @@ cursor : pointer;
 }
 
 #paging{ /*BoardPaging에 있는거*/
-/* border : 1px solid blue; */
 cursor : pointer;
 padding : 7px 10px;
 margin : 2px;
 }
-.subjectA:hover{
-text-decoration: underline;
-color : green;
+
+.subject:link{ color : black; text-decoration : none;
 }
 
+.subject:visited{color : black; text-decoration : none;
+}
+
+.subject:hover{color : green; text-decoration : underline;
+}
+
+.subject:active{color : black; text-decoration : none;
+}
 </style>
 </head>
 <body>
@@ -88,10 +97,9 @@ color : green;
 		<th style="width:200px">작성일</th>
 	</tr>
 <%for(BoardDTO boardDTO : list) { %>
-<%int seq = boardDTO.getSeq();%>  
 <tr>
 <td align="center"><%= boardDTO.getSeq() %></td>
-<td class="subjectA" style="cursor :pointer;" onclick="isLogin(<%=seq%>,<%=pg%>)"><%=boardDTO.getSubject() %></td>
+<td><a href="#" class="subject" onclick="isLogin('<%=id%>',<%=boardDTO.getSeq()%>,<%=pg%>)"><%=boardDTO.getSubject() %></a></td>
 <td align="center"><%= boardDTO.getId() %></td>
 <td align="center"><%= boardDTO.getHit() %></td>
 <td align="center"><%= new SimpleDateFormat("yyyy.MM.dd").format(boardDTO.getLogtime())%></td>
@@ -107,13 +115,12 @@ function boardPaging(pg){
 	location.href ="boardList.jsp?pg=" + pg;
 }
 
-function isLogin(seq,pg){
-	   if('<%=(String)session.getAttribute("memName")%>' == 'null') {
-	      alert("먼저 로그인하세요");
-	      location.href="http://localhost:8080/miniProject_JSP/member/loginForm.jsp";
-	   }
-	   else location.href="boardView.jsp?seq="+seq+"&pg="+pg;
+function isLogin(id,seq,pg){
+	   if(id =='null') alert("먼저 로그인 하세요 ");
+	   else
+		   location.href="boardView.jsp?seq="+seq+"&pg="+pg;
 	}
+	
 	
 function mainPage(){
 		location.href="../index.jsp";

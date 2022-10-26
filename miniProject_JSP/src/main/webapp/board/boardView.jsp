@@ -3,7 +3,6 @@
     
 <% int seq = Integer.parseInt(request.getParameter("seq"));
    int pg = Integer.parseInt(request.getParameter("pg"));
-    
 %>
 <!DOCTYPE html>
 <html>
@@ -12,8 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-pg=<%=pg %>
-seq=<%=seq %>
+글번호 : <%=seq %><br>
+페이지 번호 : <%=pg %><br>
 
 </body>
 </html>

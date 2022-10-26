@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+    <h2>회원가입</h2>
+
+    <table border="1" cellpadding="3" cellspacing="0">
+      <tr>
+        <td width="80" align="center">이름</td>
+        <td><input type="text" name="user_name" id="user_name" maxlength="20" placeholder="이름 입력"/>
+         <div id="nameDiv"></div>
+         </td>
+      </tr>
+
+      <tr>
+        <td align="center">아이디</td>
+        <td><input type="text" name="user_id" id="user_id" maxlength="20" placeholder="아이디 입력"/>
+         <div id="idDiv"></div>
+         </td>
+      </tr>
+
+      <tr>
+        <td align="center">비밀번호</td>
+        <td><input type="password" name="user_pwd" id="user_pwd" maxlength="20"/>
+         <div id="pwdDiv"></div>
+         </td>
+      </tr>
+
+      <tr>
+        <td align="center">재확인</td>
+        <td><input type="password" name="user_repwd" id="user_repwd" maxlength="20"/>
+         <div id="repwdDiv"></div>
+         </td>
+      </tr>
+
+        <tr>
+          <td align="center"> 성별</td>
+          <td><input type="radio" name="gender" id ="gender_m" value="0" checked>남
+          <input type="radio" name="gender" id="gender_W" value="1">여</td>
+          </tr>
+     
+    <tr>
+         <th><label for="email1_id" >이메일</label></th>   <!-- 가운데 정렬, 굵게 -->   
+         <td> 
+            <form name=emailForm >
+            <input type="text" name="email1" id="email1_id"  >
+            @
+            <input type="text" name="selected" >
+               <select onchange="document.emailForm.selected.value=this[this.selectedIndex].value">
+                 <option value="">직접 입력</option>
+                 <option value="gmail.com">gmail.com</option>
+                 <option value="naver.com">naver.com</option>
+                 <option value="daum.net">daum.net</option>                 
+               </select>               
+            </form>
+          </td>
+      </tr>
+      
+      <tr>
+        <td align="center">핸드폰</td>
+        <td>
+        <div>
+          <select name="user_tel1" id="user_tel1">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="019">019</option>
+          </select> 
+        - <input type="text" name="user_tel2" id="user_tel2" maxlength="10" size="10"/>
+          
+        - <input type="text" name="user_tel3" id="user_tel3" maxlength="10" size="10"/>
+        </div> 
+      </tr>
+
+      <tr>
+        <td align="center">주소</td> 
+        <td>
+        <input type="text" name="zipcode" id="zipcode"  size="10" readonly>
+        <input type="button" value="우편번호검색" onclick="checkPost()"><br>
+        <input type="text" name="addr1" id="addr1"  size="50" placeholder="주소" readonly><br>
+        <input type="text" name="addr2" id="addr2"  size="50" placeholder="상세주소">
+        </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" align="center">
+          <input type="button" value="회원가입" onclick="">
+        <input type="reset" value="다시작성">
+
+        </td>
+        </tr>
+    </table>
+
+</body>
+</html>
