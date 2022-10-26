@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.Date"%>
 
-
+<!-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+ -->
 오늘 날짜입니다 : <%=new Date() %>
+<% // String name = "코난"; //-error 중복(Duplicate local variable name) %>
+
+<!-- 
 </body>
 </html>
+ -->
+
