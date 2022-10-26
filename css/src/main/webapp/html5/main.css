@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@import url(reset.css); /* 기본설정 초기화 파일 불러오기 */
+@import url(common.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); /*필요한 글꼴 가져온것임*/
+#wrap {
+	width: 760px;
+	margin: 0 auto; /* auto 자동으로 ..*/
+}
+
+
+/*  header start*/
+/* header end */
+
+/*container start*/
+#container:after{
+	content : ''; /*''의 이미 : 내용이 없다면 비워라 이미지 or 글씨 써놓아도 됨 */
+	display: block;
+	clear : both;
+}
+
+/*snb start */
+.snb {
+	float: left;
+	width: 170px;
+}
+/*snb end */
+
+/* content start */
+#content {
+	position: relative;
+	float: right;
+	width: 560px;
+}
+/* content end */
+/*container end */
+
+/* footer start */
+/* footer end */
