@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-오늘 날짜 : <%=new Date() %>
+오늘 날짜입니다 : <%=new Date() %>
 </body>
 </html>
