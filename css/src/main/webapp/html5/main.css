@@ -3,27 +3,141 @@
 @import url(reset.css); /* 기본설정 초기화 파일 불러오기 */
 @import url(common.css);
 
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); /*필요한 글꼴 가져온것임*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*필요한 글꼴 가져온것임*/
 #wrap {
 	width: 760px;
 	margin: 0 auto; /* auto 자동으로 ..*/
 }
 
-
 /*  header start*/
+/* 어떤 영역에 ' position: absolute; ' 을 지종할 경우에 
+	그 영역을 감싸는 부분에 반드시 ' position: relative; '를 지정해야 한다.*/
+#header {
+	position: relative;
+	padding-bottom: 99px;
+	border-bottom: 1px solid #cccccc;
+	background: url(../img/bg_header.png) no-repeat 50% 100%;
+}
+
+.logo {
+	padding: 12px 0 12px 26px; /* top right bottom left */
+}
+
+.logo a {
+	display: block;
+	overflow: hidden;
+	width: 90px;
+	height: 30px;
+	background: url(../img/logo.png) no-repeat;
+	text-indent: -999em; /* 양수(+)이면 들여쓰기, 음수(-)이면 내여쓰기 */
+}
+
+.topnav { /*현재 topnav의 부모는 header*/
+	position: absolute;
+	right: 35px;
+	top: 18px;
+}
+
+.topnav dd {
+	float: left;
+	padding-right: 11px;
+	margin-right: 10px;
+	background: url(../img/bg_topnav.png) no-repeat 100% 50%; /* | */
+}
+
+.topnav dd:last-child { /*마지막 dd 한테만*/
+	padding-right: 0;
+	margin-right: 0;
+	background: none;
+}
+
+.topnav dd a {
+	color: black;
+	font-size: 0.9em;
+}
+
+.mainnav {
+	padding-left: 50px;
+	background-color: #005B9B;
+}
+
+.mainnav:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.mainnav li {
+	float: left;
+}
+
+.mainnav li a {
+	display: block;
+	padding: 0 13px;
+	background-color: #005B9B;
+	color: #ffffff;
+	font: bold 16px/40px 'Nanum Gothic', sans-serif;
+	/* font:  두깨 크기  줄높이       글꼴     Nanum Gothic 대체용 글꼴     */
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.mainnav li a:hover {
+	color: #660000;
+	background-color: #ffcc00;
+}
 /* header end */
 
 /*container start*/
-#container:after{
-	content : ''; /*''의 이미 : 내용이 없다면 비워라 이미지 or 글씨 써놓아도 됨 */
+#container {
+	background: url(../img/bg_snb.png) repeat-y 170px 0;
+	padding-bottom: 20px;
+}
+
+#container:after {
+	content: ''; /*''의 이미 : 내용이 없다면 비워라 이미지 or 글씨 써놓아도 됨 */
 	display: block;
-	clear : both;
+	clear: both;
 }
 
 /*snb start */
 .snb {
 	float: left;
 	width: 170px;
+}
+
+.snb h2 {
+	padding: 28px 14px 8px 0;
+	margin-left: 11px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #cccccc;
+	color: #005B9B;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.snb ul {
+	margin-left: 11px;
+}
+
+.snb ul a {
+	display: block;
+	padding-right: 14px;
+	color: #005B9B;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	text-decoration: none;
+	line-height: 30px;
+}
+
+.snb ul a:hover {
+	color: #660000;
+	text-decoration: underline;
 }
 /*snb end */
 
@@ -33,8 +147,91 @@
 	float: right;
 	width: 560px;
 }
+
+.locate {
+	position: absolute;
+	right: 28px;
+	top: 26px;
+	color: #ccc;
+	font-size: 0.9em;
+	word-spacing: 0.3em;
+}
+
+.locate a {
+	color: #666666;
+}
+
+.locate strong {
+	font-weight: normal;
+	color: #666666;
+	word-spacing: 0em;
+}
+
+#content h2 {
+	padding: 24px 0;
+	color: #005B9B;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#content .thum {
+	float: left;
+	margin-left: 14px;
+}
+
+#content .thum img {
+	width: 114px;
+	height: 111px;
+	border: 1px solid #cccccc;
+}
+
+#content .text {
+	margin-left: 148px;
+}
+
+#content .text p {
+	margin-bottom: 15px;
+	line-height: 1.4;
+}
 /* content end */
 /*container end */
 
 /* footer start */
+#footer {
+	border-top: 1px solid #cccccc;
+	padding: 18px 30px 40px 20px;
+	color: #666;
+	font-size: 0.9em;
+}
+
+#footer:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.btmnav {
+	float: right;
+}
+
+.btmnav dd {
+	float: left;
+}
+
+.btmnav dd:after {
+	content: '|';
+	padding: 0 0.7em;
+	color: #999;
+}
+
+.btmnav dd:last-child:after {
+	content: '';
+	padding: 0 0;
+}
+.copy{
+	float: left;
+	line-height: 1.8;
+}
+
 /* footer end */
