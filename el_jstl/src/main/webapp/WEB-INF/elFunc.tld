@@ -1,0 +1,21 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>El에서 자바 메소드 실행</description> <!--설명문// 있어도, 없어도됨 -->
+
+	<tlib-version>1.0</tlib-version> <!-- 꼭 필요로 하는 태그임 -->
+
+	<function> <!-- 함수 알려주기 -->
+		<discription>X와 Y의 합</discription>
+		
+		<name>sum</name>
+		<function-class>com.el.Compute</function-class><!-- 패키지이름까지 알려줘야함 -->
+		<function-signature>int sum(java.lang.String, java.lang.String)</function-signature> <!-- 이런 함수다 라고 알려주기  -->
+	
+	</function>
+</taglib>
+
+<!--  project의 web.xml파일은 무조건 읽어드린다. -->
+<!-- web.xml파일로 가서 등록하자. -->
