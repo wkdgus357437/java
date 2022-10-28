@@ -28,6 +28,8 @@ list2.add(cc);
 //리스트라는 이름으로  데이터 담기
 request.setAttribute("list",list); 
 request.setAttribute("list2",list2); 
+
+
 //페이지 이동
 //response.sendRedirect("jstlEnd.jsp");
 RequestDispatcher dispatcher = request.getRequestDispatcher("jstlEnd.jsp");

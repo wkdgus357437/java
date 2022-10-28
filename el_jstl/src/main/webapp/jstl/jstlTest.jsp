@@ -17,6 +17,7 @@
 
 나의 이름은 <c:out value="${name}"></c:out>입니다. <br>
 내 나이는 <c:out value="${age}"/> 살 입니다. <br>
+
 <!-- 내 나이는 ${age }살 입니다.   -->
 
 <h3>*** forEach ***</h3>
