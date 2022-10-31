@@ -25,8 +25,13 @@
 	cursor: pointer;
 }
 
-#paging { /*BoardPaging에 있는거*/
+#paging {
 	cursor: pointer;
+	padding: 7px 10px;
+	margin: 2px;
+}
+#pagingHTML{
+	text-align: center;
 	padding: 7px 10px;
 	margin: 2px;
 }
@@ -74,8 +79,8 @@
 		 </c:forEach>
 		
 	</table>
-<div>
-${pagingHTML}
+<div id=pagingHTML>
+<input type="button" name="main"  value="글작성" onclick="mainPage()" style="float : left">${pagingHTML}
 </div>
 	<script type="text/javascript">
 		function boardPaging(pg) {

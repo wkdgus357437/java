@@ -109,15 +109,15 @@ public class ControlServlet extends HttpServlet {
 		 if(request.getMethod().equals("POST")) //POST는 반드시 대문자
 			 request.setCharacterEncoding("UTF-8");
 		
-		 //요청이 들어왔을 때 - http://localhost:8080/mvcmember/member/writeForm.do  -- /member/writeForm.do = getServletPath --
+		 
 	      String category = request.getServletPath();
-	      System.out.println("category = "+category); //member/writeForm.do
+	      System.out.println("category = "+category); 
 	      
-	      CommandProcess com = (CommandProcess)map.get(category); //member.service.WriteFormService
+	      CommandProcess com = (CommandProcess)map.get(category); 
 	      String view = null;
 	      
 	      try {
-	         view = com.requestPro(request, response); // "/member/writeForm.jsp"
+	         view = com.requestPro(request, response);
 	      } catch (Throwable e) {
 	         e.printStackTrace();
 	      }
