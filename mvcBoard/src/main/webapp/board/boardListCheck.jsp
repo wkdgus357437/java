@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- if또는 다중문 쓰려고할떄 -->
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
 	text-align: center;
 	width: 950px;
 	margin-top: 10px;
-} 
+}
 
 #currentPaging { /*BoardPaging에 있는거*/
 	border: 1px solid blue;
@@ -30,7 +30,8 @@
 	padding: 7px 10px;
 	margin: 2px;
 }
-#pagingHTML{
+
+#pagingHTML {
 	text-align: center;
 	padding: 7px 10px;
 	margin: 2px;
@@ -60,28 +61,34 @@
 </head>
 <body>
 	<table border="1" cellpadding="5" frame="hsides" rules="rows">
+		<c:if test="${requestScope.list != null }">
 		<tr>
 			<th style="width: 100px">글번호</th>
 			<th style="width: 400px">제목</th>
 			<th style="width: 100px">작성자</th>
 			<th style="width: 100px">조회수</th>
 			<th style="width: 200px">작성일</th>
-		</tr>		
-		
-		<c:forEach var="boardDTO" items="${requestScope.list }" >
-		<tr>
-<td align="center">${ boardDTO.seq}</td>
-<td><a href="#" class="subject" onclick="isLogin(${boardDTO.seq},${param.pg})">${boardDTO.subject }</a></td>
-<td align="center">${ boardDTO.id }</td>
-<td align="center">${ boardDTO.hit}</td>
-<td align="center">${ boardDTO.logtime}</td>
-</tr>
-		 </c:forEach>
-		
+		</tr>
+
+		<c:forEach var="boardDTO" items="${requestScope.list }">
+			<tr>
+				<td align="center">${ boardDTO.seq}</td>
+				<td><a href="#" class="subject"
+					onclick="isLogin(${boardDTO.seq},${param.pg})">${boardDTO.subject }</a></td>
+				<td align="center">${ boardDTO.id }</td>
+				<td align="center">${ boardDTO.hit}</td>
+				<td align="center"><fmt:formatDate value="${ boardDTO.logtime}" pattern="yyyy.M.dd"/></td>
+				
+			</tr>
+		</c:forEach>
+</c:if>
 	</table>
-<div id=pagingHTML>
-<input type="button" name="main"  value="글작성" onclick="mainPage()" style="float : left">${pagingHTML}
-</div>
+	
+	<div id=pagingHTML>
+		<input type="button" name="main" value="글작성" onclick="mainPage()" style="float: left;">
+		${pagingHTML}
+	</div>
+	
 	<script type="text/javascript">
 		function boardPaging(pg) {
 			location.href = "/mvcBoard/board/boardListCheck.do?pg=" + pg;

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -23,8 +24,10 @@ public class BoardListCheckService implements CommandProcess {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
 		//세션
-		String id ="홍";
-
+		HttpSession session = request.getSession();
+		String id ="hong";
+		//String id = (String)session.getAttribute("memId");
+		
 		//페이징 처리
 		int endNum = pg*5;
 		int startNum = endNum -4;
@@ -37,6 +40,7 @@ public class BoardListCheckService implements CommandProcess {
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		List<BoardDTO> list = boardDAO.boardList(map);
 		request.setAttribute("list",list);
+		
 		//페이징 처리
 		int totalA = boardDAO.getTotalA(); //총 글수
 
@@ -47,6 +51,11 @@ public class BoardListCheckService implements CommandProcess {
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		
+		
+		//request.setAttribute("pg",pg);
+		//request.setAttribute("list",list);
+		//request.setAttribute("boardPaging",boardPaging);
+		//request.setAttribute("id",id);
 		request.setAttribute("pagingHTML",boardPaging.getPagingHTML());
 
 		return "/board/boardListCheck.jsp";

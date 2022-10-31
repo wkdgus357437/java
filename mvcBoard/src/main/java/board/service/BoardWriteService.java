@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -16,14 +17,18 @@ public class BoardWriteService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		//데이터
-		request.setCharacterEncoding("UTF-8");
 
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-
-		String id = "홍";
-		String name = "홍";
-		String email = "hong@hong.hong";
+		
+		HttpSession session = request.getSession(); //세션 생성
+		//String id = (String)session.getAttribute("memId");
+		//String name = (String)session.getAttribute("memName");
+		//String email = (String)session.getAttribute("memEmail");
+		
+		String id = "hong";
+		String name = "홍길동";
+		String email ="hong@naver.com";
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);

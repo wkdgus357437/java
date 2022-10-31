@@ -41,18 +41,48 @@ $('#id').focusout(function() {
 			type: 'post',													// get or post 방식 중 어떤걸로?
 			data: 'id=' + $('#id').val(), 									// 서버로 보낼 데이터 형식
 			dataType: 'text', // text, html, xml, json 						// 서버로부터 받은 데이터 자료형
-			success: function(data) { 
-				data=(data.trim());											// trim() ->공백제거
-				if(data =='exist'){ //사용 불가능
-				$('#idDiv').text('사용 불가능');	
-				}else if(data == 'non_exist'){ //사용가능
-				$('#idDiv').text('사용 가능');	
-				$('#idDiv').css('color','powderblue');
-				
-				$('input[name="check"]').val($('#id').val());
+			success: function(data) {
+				data = (data.trim());											// trim() ->공백제거
+				if (data == 'exist') { //사용 불가능
+					$('#idDiv').text('사용 불가능');
+				} else if (data == 'non_exist') { //사용가능
+					$('#idDiv').text('사용 가능');
+					$('#idDiv').css('color', 'powderblue');
+
+					$('input[name="check"]').val($('#id').val());
 				}
 			},									// 데이터 받기
 			error: function() { }
 		});//$.ajax            
 	}
-});
+});//writeForm
+
+$('#idLogin').click(function() {
+	if ($('#idLog').val() == '') {
+		$('#idLogDiv').text('먼저 아이디를 입력하세요.');
+		$('#idLogDiv').css('color', 'magenta');
+	} else if ($('#pwdLog').val() == '') {
+		$('#pwdLogDiv').text('비밀번호를 입력하세요.');
+		$('#pwdLogDiv').css('color', 'red');
+	} else {
+		$.ajax({
+			url: 'http://localhost:8080/miniProject_MVC/member/loginCheck.do',
+			type: 'post',
+			data: 'id='+$('#idLog').val()+'&pwd='+$('#pwdLog').val(),
+			dataType: 'text',
+			success: function(login){
+				login=(login.trim());
+				if(login == 'LoginOk'){
+					//$('#idLogDiv').text('로그인 성공');
+					alert("로그인성공");
+				}else if(login =='LoginFail'){
+				//$('#idLogDiv').text('로그인 실패');
+				alert("로그인 실패");
+				}
+			},
+			error: function() { }
+
+		});
+
+	}
+});//loginForm

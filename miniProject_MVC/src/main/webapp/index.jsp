@@ -57,7 +57,6 @@ body {
 
 </head>
 <body>
-
 	<div id="header">
 	<h1>
 		<img src="/miniProject_MVC/img/img3.gif" width="70" height="70" style="cursor:pointer;" alt="라이언" onclick="location.href='/miniProject_MVC/index.jsp'">
@@ -92,6 +91,5 @@ body {
 <!--  -->
 	<div id="footer">
 	</div>
-
 </body>
 </html>
