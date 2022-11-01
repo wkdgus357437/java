@@ -107,7 +107,7 @@ form[name="writeForm"] div {
 		</tr>
 	  </table>
 </form>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script> <!-- CDN방식 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script> <!-- CDN방식 jQuery쓰려면 가져와야 한다-->
 <!-- <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script> --> <!-- 파일 넣은 후 jQuery.js //순서 잡아야함 -->
 <script type="text/javascript" src="../js/member.js"></script>
 

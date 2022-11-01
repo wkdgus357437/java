@@ -37,12 +37,12 @@ $('#id').focusout(function() {
 	} else {
 		//서버로 요청하고 다시 제자리로 돌아오기
 		$.ajax({
-			url: 'http://localhost:8080/miniProject_MVC/member/checkId.do',	// 서버로 요청할 URL
-			type: 'post',													// get or post 방식 중 어떤걸로?
-			data: 'id=' + $('#id').val(), 									// 서버로 보낼 데이터 형식
-			dataType: 'text', // text, html, xml, json 						// 서버로부터 받은 데이터 자료형
+			url: 'http://localhost:8080/miniProject_MVC/member/checkId.do',				// 서버로 요청할 URL
+			type: 'post',																// get or post 방식 중 어떤걸로?
+			data: 'id=' + $('#id').val(), 												// 서버로 보낼 데이터 형식
+			dataType: 'text', // text, html, xml, json 	//객체로오는건 json형식으로 바꿔야함	// 서버로부터 받은 데이터 자료형
 			success: function(data) {
-				data = (data.trim());											// trim() ->공백제거
+				data = (data.trim());									// trim() ->공백제거
 				if (data == 'exist') { //사용 불가능
 					$('#idDiv').text('사용 불가능');
 				} else if (data == 'non_exist') { //사용가능
@@ -57,6 +57,7 @@ $('#id').focusout(function() {
 	}
 });//writeForm
 
+/* loginForm에서 따로 js 파일로 옮겨서 할떄임... idLog 와 pwdLog는 name이 writeForm과 곂칠까봐 바꾼거임(이대 하려면 loginForm 바꿔줘야함)
 $('#idLogin').click(function() {
 	if ($('#idLog').val() == '') {
 		$('#idLogDiv').text('먼저 아이디를 입력하세요.');
@@ -66,7 +67,7 @@ $('#idLogin').click(function() {
 		$('#pwdLogDiv').css('color', 'red');
 	} else {
 		$.ajax({
-			url: 'http://localhost:8080/miniProject_MVC/member/loginCheck.do',
+			url: 'http://localhost:8080/miniProject_MVC/member/loginCheck.do', //loginCheck.do ->command.properties에서 정해줘야함
 			type: 'post',
 			data: 'id='+$('#idLog').val()+'&pwd='+$('#pwdLog').val(),
 			dataType: 'text',
@@ -82,7 +83,8 @@ $('#idLogin').click(function() {
 			},
 			error: function() { }
 
-		});
+		});//$.ajax   
 
 	}
 });//loginForm
+*/
