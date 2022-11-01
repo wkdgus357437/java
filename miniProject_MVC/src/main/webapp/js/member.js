@@ -1,30 +1,55 @@
 function change() {
 	document.writeForm.email2.value = document.writeForm.email3.value;
 }
-function checkWrite() {
-	document.getElementById("nameDiv").innerText = "";
-	document.getElementById("idDiv").inrnerText = "";
-	document.getElementById("pwdDiv").inneText = "";
 
-	if (document.getElementById("name").value == "")
-		document.getElementById("nameDiv").innerText = "이름을 입력하세요";
+//회원가입 jQuery적용
+$('#writeBtn').click(function() {
+	$('#nameDiv').empty();
+	$('#idDiv').empty();
+	$('#pwdDiv').empty();
 
-	else if (document.getElementById("id").value == "")
-		document.getElementById("idDiv").innerText = "아이디를 입력하세요";
+	if ($('#name').val() == '') {
+		$('#nameDiv').text(' 이름을 입력하세요.');
+		$('#name').focus();
 
-	else if (document.getElementById("pwd").value == "")
-		document.getElementById("pwdDiv").innerText = "비밀번호를 입력하세요";
+	} else if ($('#id').val() == '') {
+		$('#idDiv').text(' 아이디를 입력하세요.');
+		$('#id').focus();
 
-	else if (document.getElementById("pwd").value != document.getElementById("repwd").value)
-		document.getElementById("pwdDiv").innerText = "비밀번호가 맞지 않습니다.";
+	} else if ($('#pwd').val() == '') {
+		$('#pwdDiv').text(' 비밀번호를 입력하세요.');
+		$('#pwd').focus();
 
-	else if (document.writeForm.id.value != document.writeForm.check.value)
-		document.getElementById("idDiv").innerText = "아이디 중복체크 하세요";
+	} else if ($('#pwd').val() != $('#repwd').val()) {
+		$('#pwdDiv').text(' 비밀번호가 맞지 않습니다.');
+		$('#pwd').focus();
 
-	else
-		document.writeForm.submit();
-}
+	} else if ($('#id').val() != $('#check').val()) {
+		$('#idDiv').text(' 아이디 중복체크 하세요.');
+		$('#id').focus();
+	} else {
+		$.ajax({
+			url: '/miniProject_MVC/member/write.do',
+			type: 'post',
+			data: $('#writeForm').serialize(),//F12 console창 보면 데이터 문자열로 뽑아줌
+			success: function(){
+				alert("회원가입 성공");
+				location.href = '/miniProject_MVC/index.jsp';
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});//$.ajax 
+		
 
+	}
+
+
+});//writeBtn
+
+
+
+//
 //중복 아이디 체크 jQuery적용
 $('#id').focusout(function() {
 	//if (document.getElementById("id").value == "")
@@ -52,10 +77,38 @@ $('#id').focusout(function() {
 					$('input[name="check"]').val($('#id').val());
 				}
 			},									// 데이터 받기
-			error: function() { }
+			error: function(err) { 
+				console.log(err);
+			}
 		});//$.ajax            
 	}
 });//writeForm
+
+/*
+function checkWrite() {
+	document.getElementById("nameDiv").innerText = "";
+	document.getElementById("idDiv").inrnerText = "";
+	document.getElementById("pwdDiv").inneText = "";
+
+	if (document.getElementById("name").value == "")
+		document.getElementById("nameDiv").innerText = "이름을 입력하세요";
+
+	else if (document.getElementById("id").value == "")
+		document.getElementById("idDiv").innerText = "아이디를 입력하세요";
+
+	else if (document.getElementById("pwd").value == "")
+		document.getElementById("pwdDiv").innerText = "비밀번호를 입력하세요";
+
+	else if (document.getElementById("pwd").value != document.getElementById("repwd").value)
+		document.getElementById("pwdDiv").innerText = "비밀번호가 맞지 않습니다.";
+
+	else if (document.writeForm.id.value != document.writeForm.check.value)
+		document.getElementById("idDiv").innerText = "아이디 중복체크 하세요";
+
+	else
+		document.writeForm.submit();
+}
+*/
 
 /* loginForm에서 따로 js 파일로 옮겨서 할떄임... idLog 와 pwdLog는 name이 writeForm과 곂칠까봐 바꾼거임(이대 하려면 loginForm 바꿔줘야함)
 $('#idLogin').click(function() {

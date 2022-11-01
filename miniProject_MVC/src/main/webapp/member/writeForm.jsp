@@ -15,7 +15,7 @@ form[name="writeForm"] div {
 </head>
 <body>
 	<h2>회원가입</h2>
-	<form name="writeForm" method="post" action="writeCheck.do" >
+	<form name="writeForm" id="writeForm"> <!-- action과 method는 member.js에서 jQuery방식으로 바꿈 -->
 	<table border="1" cellpadding="5" cellspacing="0">
 	
 		<tr>
@@ -31,7 +31,7 @@ form[name="writeForm"] div {
 			<td>
 				<input type="text" name="id" id="id" size="30" placeholder="아이디 입력">
 				<!--<input type="button" value="중복체크" id="checkId"> -->
-				<input type="hidden" name="check">
+				<input type="hidden" name="check" id="check">
 				<div id="idDiv"></div>		
 			</td>
     	</tr>
@@ -101,7 +101,7 @@ form[name="writeForm"] div {
 	    
 		<tr>
 	   		<th colspan="2">
-				<button type="button" onclick="checkWrite()">회원가입</button>
+				<button type="button" id="writeBtn">회원가입</button>
 				<button type="reset">다시작성</button>
 		 	</th>
 		</tr>

@@ -1,18 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-<script type="text/javascript">
-window.onload = function(){
-	alert("회원가입 성공");
-	location.href = 'loginForm.do';
-}
-</script>
-</body>
-</html>
+    
+ <!-- 현재 forword하고 있어서 파일에 내용이 없어도 가지고 있어야 한다. -->
