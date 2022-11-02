@@ -21,7 +21,7 @@ form[name="writeForm"] div {
 		<tr>
 			<th>이름</th>
 			<td>
-				<input type="text" name="name" id="name" value="${memberDTO.name }" placeholder="이름 입력">
+				<input type="text" name="name" id="name"  placeholder="이름 입력">
 				<div id="nameDiv"></div>	
 			</td>
 		</tr>
@@ -29,7 +29,7 @@ form[name="writeForm"] div {
     	<tr>
 			<th>아이디</th>
 			<td>
-				<input type="text" name="id" id="id" size="30" value="${memberDTO.id }" readonly>
+				<input type="text" name="id" id="id" size="30" readonly>
 				<input type="hidden" name="check" id="check">
 				<div id="idDiv"></div>		
 			</td>
@@ -51,9 +51,9 @@ form[name="writeForm"] div {
 	    <tr>
 			<th>성별</th>
 			<td>
-				<input type="radio" name="gender" id="gender_m" value="0" checked />
+				<input type="radio" name="gender" id="gender_m" value="0" />
 				<label for="gender_m">남자</label>
-				<input type="radio" name="gender" id="gender_f" value="1" />
+				<input type="radio" name="gender" id="gender_f" value="1" checked="checked"/>
 				<label for="gender_f">여자</label>
 			</td>
 	    </tr>
@@ -107,11 +107,94 @@ form[name="writeForm"] div {
 	  </table>
 </form>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+
+//jquery
+$(function(){ 
+$.ajax({
+		url: '/miniProject_MVC/member/getMember.do',
+		type: 'post',
+		dataType:'json', /* 타입 : text, html, jsom, xml */
+		success: function(data){
+			//alert(JSON.stringify(data));
+			
+			$('#name').val(data.name);
+			$('#id').val(data.id);
+			$('#pwd').val(data.pwd);
+			$('input[name="gender"]:eq(' + data.gender+')').attr("checked",true);
+			$('#email1').val(data.email1);
+			$('#email2').val(data.email2);
+			$('#tel1').val(data.tel1);
+			$('#tel2').val(data.tel2);
+			$('#tel3').val(data.tel3);
+			$('#zipcode').val(data.zipcode);
+			$('#addr1').val(data.addr1);
+			$('#addr2').val(data.addr2);
+			
+		},
+		error:function(err){
+		console.log(err);
+		}
+		
+	});
+		
+});
+
+//회원정보수정
+$('#updateBtn').click(function() {
+	$('#nameDiv').empty();
+	$('#pwdDiv').empty();
+
+	if ($('#name').val() == '') {
+		$('#nameDiv').text(' 이름을 입력하세요.');
+		$('#name').focus();
+
+	}else if ($('#pwd').val() == '') {
+		$('#pwdDiv').text(' 비밀번호를 입력하세요.');
+		$('#pwd').focus();
+
+	} else if ($('#pwd').val() != $('#repwd').val()) {
+		$('#pwdDiv').text(' 비밀번호가 맞지 않습니다.');
+		$('#pwd').focus();
+
+	} else {
+		$.ajax({
+			url: '/miniProject_MVC/member/update.do',
+			type: 'post',
+			data: $('#updateForm').serialize(),//F12 console창 보면 데이터 문자열로 뽑아줌
+			success: function(){
+				alert("회원정보수정");
+				location.href = '/miniProject_MVC/index.jsp';
+			},
+			error: function(err){
+				console.log(err); //F12 consle 창에서 오류 확인가능
+			}
+		});//$.ajax 
+		
+
+	}
+
+
+});//writeBtn
+</script>
+
 <!-- 우편번호 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/post.js"></script>
 </body>
 </html>
+
+<!-- 
+
+String name ="홍길동"; //java
+
+JSON
+{
+	name = '홍길동'
+}
+
+ -->
 
 
 

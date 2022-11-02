@@ -16,8 +16,8 @@ import lombok.Setter;
 
 
 public class MemberDTO {
-	@NonNull private String name; // NonNull은 이 값에만 적용된다.
-	
+	@NonNull 
+	private String name;
 	private String id;
 	private String pwd;
 	private String gender;

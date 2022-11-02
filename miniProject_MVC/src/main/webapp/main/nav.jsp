@@ -18,7 +18,7 @@ text-decoration: none;
 			style="font-size: 10pt;">회원가입</a>
 	</c:if>
 	<c:if test="${memId !=null }">
-		<h3><a href="/miniProject_MVC/member/updateForm.jsp">${memId}</a>님 로그인</h3>
+		<h3><a href="/miniProject_MVC/member/updateForm2.do">${memId}</a>님 로그인</h3> <!-- GetMemberService, -->
 		<input type="button" value="로그아웃" id="logoutBtn">
 	</c:if>
 	<br>
@@ -33,7 +33,7 @@ text-decoration: none;
 			type : 'post',
 			success : function() {
 				alert('로그아웃');
-				location.href = "./index.jsp"; //incloud되어 상대번지로 (../) 말고 (./)이렇게
+				location.href = "/miniProject_MVC/index.jsp"; //incloud되어 상대번지로 (../) 말고 (./)이렇게
 			},
 			error : function(err) {
 				console.log(err);
