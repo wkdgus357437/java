@@ -37,7 +37,7 @@ $('#writeBtn').click(function() {
 				location.href = '/miniProject_MVC/index.jsp';
 			},
 			error: function(err){
-				console.log(err);
+				console.log(err); //F12 consle 창에서 오류 확인가능
 			}
 		});//$.ajax 
 		
@@ -78,7 +78,7 @@ $('#id').focusout(function() {
 				}
 			},									// 데이터 받기
 			error: function(err) { 
-				console.log(err);
+				console.log(err); //F12 consle 창에서 오류 확인가능
 			}
 		});//$.ajax            
 	}

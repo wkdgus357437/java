@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<style type="text/css">
+
+a{
+text-decoration: none;
+}
+</style>
 
 <div>
 	<c:if test="${sessionScope.memId == null }">
@@ -12,9 +18,11 @@
 			style="font-size: 10pt;">회원가입</a>
 	</c:if>
 	<c:if test="${memId !=null }">
-		<h3>${memId}님 로그인</h3>
+		<h3><a href="/miniProject_MVC/member/updateForm.jsp">${memId}</a>님 로그인</h3>
 		<input type="button" value="로그아웃" id="logoutBtn">
 	</c:if>
+	<br>
+	<br>
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
