@@ -11,7 +11,7 @@
 
 <typeAliases>
 	<typeAlias type="member.bean.MemberDTO" alias="member"/>  <!-- alisa 로 별명을 지어줘서 그 별명을 useMapper type의 이름에 넣어준다-->
-
+	<typeAlias type="board.bean.BoardDTO" alias="board"/> 
 </typeAliases>
 
 	<environments default="development">
@@ -28,7 +28,7 @@
 	
 	<mappers> <!-- mappers 알려주기  여러개 가능 resource는 . 안되서 /로 대체함-->
 	<mapper resource="member/dao/memberMapper.xml"/>
-	
+	<mapper resource="board/dao/boardMapper.xml"/>
 	</mappers>
 
 </configuration>

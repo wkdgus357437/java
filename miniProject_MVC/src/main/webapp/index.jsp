@@ -7,24 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+html, body {
+	width: 100%;
+	height: 100%;
+}
+html {
+	overflow-y: scroll;
+}
 
-body {
-   margin: 0;
-   padding: 0;
-   height: 100%;
-   width: auto;
+#wrap{
+	 width: 1100px; 
+	margin: 0 auto;
+	
 }
 
 #header {
-   width: 1700px;
-   height: 10%;
-   text-align: center;
+	height: 10%;
+	text-align: center;
 }
 
 #container {
-   margin: auto;
-   width: 1700px;
-   height: 500px;
+	margin: auto;
+	width: 1100px;
+	height: 500px;
 }
 
 #container:after {
@@ -36,7 +41,6 @@ body {
 
 #nav {
    margin-left: 10px;
-   /* width: 400px; */
    width: 25%;
    height: 100%;
    float: left;
@@ -49,14 +53,14 @@ body {
 }
 
 #footer {
-   width: 1700px;
+   width: 1100px;
    height: 10%;
 }
 </style>
 
-
 </head>
 <body>
+<div id="wrap">
 	<div id="header">
 	<h1>
 		<img src="/miniProject_MVC/img/img3.gif" width="70" height="70" style="cursor:pointer;" alt="라이언" onclick="location.href='/miniProject_MVC/index.jsp'">
@@ -91,5 +95,6 @@ body {
 <!--  -->
 	<div id="footer">
 	</div>
+	</div><!-- wrap -->
 </body>
 </html>
