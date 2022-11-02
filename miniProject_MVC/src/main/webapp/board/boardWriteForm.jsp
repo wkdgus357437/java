@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-div {
+form[name="boardWriteForm"] div {
 	color: red;
 	font-size: 8pt;
 	font-weight: bold;
@@ -14,6 +14,7 @@ div {
 </style>
 </head>
 <body>
+
 <h3>글쓰기</h3>
 <form name="boardWriteForm" id="boardWriteForm">
 	<table border="1" cellpadding="5" cellspacing="0">
@@ -39,7 +40,6 @@ div {
 		</tr>
 	</table>
 </form>
-</div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 $('#boardWrite').click(function() {
@@ -50,7 +50,7 @@ $('#boardWrite').click(function() {
 		$('#subjectDiv').text(' 제목을 입력하세요.');
 		$('#subject').focus();
 	}else if ($('#content').val() == ''){
-		$('#contentDiv').text(' 제목을 입력하세요.');
+		$('#contentDiv').text(' 내용을 입력하세요.');
 		$('#content').focus();
 	}else{
 		$.ajax({

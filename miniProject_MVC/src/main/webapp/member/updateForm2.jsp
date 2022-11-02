@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-form[name="writeForm"] div {
+form[name="updateForm"] div {
 	color : red;
 	font-size : 8pt;
 	font-weight : bold;

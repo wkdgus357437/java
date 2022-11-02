@@ -10,7 +10,9 @@ public class BoardWriteFormService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 	
-		return "/board/boardWriteForm.jsp";
+		request.setAttribute("display", "/board/boardWriteForm.jsp");//현재 있는 창에서 boardWriteForm로 바로 전환
+		return "/index.jsp";
+		//창 넘어가서 나오게 하려면 그냥 return "/boardWriteForm.jsp" 로 진행
 	}
 
 }

@@ -18,8 +18,8 @@ text-decoration: none;
 			style="font-size: 10pt;">회원가입</a>
 	</c:if>
 	<c:if test="${memId !=null }">
-		<h3><a href="/miniProject_MVC/member/updateForm2.do">${memId}</a>님 로그인</h3> <!-- GetMemberService, -->
-		<input type="button" value="로그아웃" id="logoutBtn">
+		<h3><a href="/miniProject_MVC/member/updateForm2.do">${memId}</a>&nbsp;님 로그인</h3> <!-- GetMemberService,updateForm2 -->
+		<input type="button" value="로그아웃" id="logoutBtn">			<!-- &nbsp; 띄어쓰기(공백) -->
 	</c:if>
 	<br>
 	<br>
