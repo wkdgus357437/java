@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- if또는 다중문 쓰려고할떄 -->
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-#pagingDiv { /*boardList에 있는거*/
-	/*border : 1px solid red;*/
+#pagingDiv {
 	text-align: center;
-	width: 950px;
+	width: 900px;
 	margin-top: 10px;
 }
 
-#currentPaging { /*BoardPaging에 있는거*/
+#currentPaging {
 	border: 1px solid blue;
-	padding: 7px 10px;
+	padding: 5px 10px;
 	margin: 2px;
 	color: red;
 	text-decoration: underline;
@@ -27,41 +26,20 @@
 
 #paging {
 	cursor: pointer;
-	padding: 7px 10px;
+	padding: 5px 10px;
 	margin: 2px;
 }
 
-#pagingHTML {
-	text-align: center;
-	padding: 7px 10px;
-	margin: 2px;
-}
-
-.subject:link {
-	color: black;
-	text-decoration: none;
-}
-
-.subject:visited {
-	color: black;
-	text-decoration: none;
-}
-
-.subject:hover {
-	color: green;
-	text-decoration: underline;
-}
-
-.subject:active {
-	color: black;
-	text-decoration: none;
-}
+.subjectA:link { color: black; text-decoration: none; }
+.subjectA:visited { color: black; text-decoration: none; }
+.subjectA:hover { color: green; text-decoration: underline; }
+.subjectA:active { color: black; text-decoration: none; }
 </style>
-
 </head>
 <body>
-	<table border="1" cellpadding="5" frame="hsides" rules="rows">
-		<c:if test="${requestScope.list != null }">
+<input type="hidden" id="pg" value="${pg }">
+
+	<table id="boardListTable" border="1" cellpadding="5" frame="hsides" rules="rows">
 		<tr>
 			<th style="width: 100px">글번호</th>
 			<th style="width: 400px">제목</th>
@@ -69,42 +47,49 @@
 			<th style="width: 100px">조회수</th>
 			<th style="width: 200px">작성일</th>
 		</tr>
-
-		<c:forEach var="boardDTO" items="${requestScope.list }">
-			<tr>
-				<td align="center">${ boardDTO.seq}</td>
-				<td><a href="#" class="subject"
-					onclick="isLogin(${boardDTO.seq},${param.pg})">${boardDTO.subject }</a></td>
-				<td align="center">${ boardDTO.id }</td>
-				<td align="center">${ boardDTO.hit}</td>
-				<td align="center"><fmt:formatDate value="${ boardDTO.logtime}" pattern="yyyy.M.dd"/></td>
-				
-			</tr>
-		</c:forEach>
-</c:if>
+		
+		<!-- 동적처리 -->
+		
 	</table>
 	
-	<div id=pagingHTML>
-		<input type="button" name="main" value="글작성" onclick="mainPage()" style="float: left;">
-		${pagingHTML}
+	<div style="display: inline-block;">
+		<div id="pagingDiv">${boardPaging.pagingHTML }</div>
 	</div>
-	
-	<script type="text/javascript">
-		function boardPaging(pg) {
-			location.href = "/mvcBoard/board/boardListCheck.do?pg=" + pg;
-		}
 
-		function isLogin(seq, pg) {
-			//if (id == 'null')
-			//	alert("먼저 로그인 하세요 ");
-			//else
-				location.href = "/mvcBoard/board/boardViewCheck.do?seq=" + seq + "&pg=" + pg;
-		}
 
-		function mainPage(){
-		location.href="/mvcBoard/board/boardWriteForm.do";
+<script type="text/javascript">
+function boardPaging(pg) {
+	location.href = "boardList.do?pg=" + pg;
 }
-	</script>
 
+function isLogin(id, seq, pg){
+	if(id == 'null') 
+		alert("먼저 로그인하세요");
+	//else
+		//location.href="boardView.jsp?seq=" + seq + "&pg="+pg;
+}
+</script>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="../js/boardList.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

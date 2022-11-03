@@ -34,7 +34,7 @@ form[name="boardWriteForm"] div {
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<input type="button" value="글작성"  id="boardWrite">
+				<input type="button" value="글작성"  id="boardWriteBtn">
             	<input type="reset" value="다시작성">				
 			</td>
 		</tr>
@@ -42,7 +42,7 @@ form[name="boardWriteForm"] div {
 </form>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-$('#boardWrite').click(function() {
+$('#boardWriteBtn').click(function() {
 	$('#subjectDiv').empty();
 	$('#contentDiv').empty();
 	
@@ -57,10 +57,15 @@ $('#boardWrite').click(function() {
 			url: '/miniProject_MVC/board/boardWriteCheck.do',
 			type: 'post',
 			data: $('#boardWriteForm').serialize(),
+			/* date :{ // json 
+				'subject' : $('#subject').val(),
+				'content' : $('#content').val()
+			},
+			*/
 			dataType:'text',
 			success:function(){
 				alert("글을 저장하였습니다.");
-				location.href ='/miniProject_MVC/index.jsp';
+				location.href ='/miniProject_MVC/board/boardListCheck.do?pg=1';
 			},
 			eroor:function(err){
 				console.log(err);

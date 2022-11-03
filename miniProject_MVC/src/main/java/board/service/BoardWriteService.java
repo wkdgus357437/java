@@ -21,14 +21,10 @@ public class BoardWriteService implements CommandProcess {
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
-		HttpSession session = request.getSession(); //세션 생성
+		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
 		String name = (String)session.getAttribute("memName");
 		String email = (String)session.getAttribute("memEmail");
-		
-		//String id = "hong";
-		//String name = "홍길동";
-		//String email ="hong@naver.com";
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);

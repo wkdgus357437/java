@@ -23,10 +23,10 @@ public class BoardListCheckService implements CommandProcess {
 		//데이터
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
+		/*
 		//세션
 		HttpSession session = request.getSession();
-		String id ="hong";
-		//String id = (String)session.getAttribute("memId");
+		String id = (String)session.getAttribute("memId");
 		
 		//페이징 처리
 		int endNum = pg*5;
@@ -56,9 +56,13 @@ public class BoardListCheckService implements CommandProcess {
 		//request.setAttribute("list",list);
 		//request.setAttribute("boardPaging",boardPaging);
 		//request.setAttribute("id",id);
-		request.setAttribute("pagingHTML",boardPaging.getPagingHTML());
-
-		return "/board/boardListCheck.jsp";
+		
+		//request.setAttribute("pagingHTML",boardPaging.getPagingHTML());
+		//return "/board/boardListCheck.jsp";
+		 */
+		request.setAttribute("pg",pg);
+		request.setAttribute("display","/board/boardListCheck.jsp");
+		return "/index.jsp";
 	}
 
 }

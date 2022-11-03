@@ -38,9 +38,9 @@
 
 <ul class="mainnav">
 	<c:if test="${sessionScope.memId != null }">
-		<li><a href="./board/boardWriteForm.do">글쓰기</a></li>
+		<li><a href="/miniProject_MVC/board/boardWriteForm.do">글쓰기</a></li>
 	</c:if>
-	<li><a href="#">목록</a></li>
+	<li><a href="/miniProject_MVC/board/boardListCheck.do?pg=1">목록</a></li>
 </ul>
 
 
