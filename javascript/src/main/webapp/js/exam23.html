@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>window 객체</h1>
+	<h3>open 메소드 확인</h3>
+	<div>
+
+		<a href="#" onclick="open1(); return false;">새 창 열기</a> <br> 
+		<a href="#" onclick="open2(); return false;">팝업 창 열기(1)</a> <br>
+	    <a href="#" onclick="open3('http://www.naver.com'); return false;">팝업 창 열기(2-1)</a> <br> 
+	    <a href="#" onclick="open3('http://www.daum.net'); return false;">팝업 창 열기(2-2)</a>
+	</div>
+
+	<script type="text/javascript">
+		function open1() {
+			//새로운 창이 열린다.
+			window.open("open.html");
+		}
+//--------------------------------------------------------------------------------------------------------------
+		function open2() {
+			//클릭할 떄마다 새로운 팝업창이 계속 열린다
+			window.open("open.html", " ",
+					"width=300, height=500, scrollbars=no, toolbar=no, meubar=no, status=no, location=no");
+		}
+		//window.open()의 매개 변수는 1개가 들어가던가 3개가 다들어가던가 open1, open2 참고
+//--------------------------------------------------------------------------------------------------------------
+		function open3(url){
+			//한번 생성된 팝업창을 재사용
+			window.open(url,"myWindow","width=300, height=500, scrollbars=no, toolbar=no, meubar=no, status=no, location=no");
+		}
+//--------------------------------------------------------------------------------------------------------------	
+		function open4(){
+	
+	
+}
+		
+		</script>
+</body>
+</html>

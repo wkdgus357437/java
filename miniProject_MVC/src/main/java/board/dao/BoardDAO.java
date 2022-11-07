@@ -52,5 +52,20 @@ public class BoardDAO {
 		int totalA = sqlSession.selectOne("boardSQL.getTotalA");
 		return totalA;
 	}
-	
+
+	public BoardDTO getBoard(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		BoardDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard",seq);
+		sqlSession.close();
+		
+		return boardDTO;
+	}
+
+	public void setHit(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("boardSQL.setHit",seq);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
 }

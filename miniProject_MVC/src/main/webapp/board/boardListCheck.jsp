@@ -38,6 +38,7 @@
 </head>
 <body>
 <input type="hidden" id="pg" value="${pg }">
+<input type="hidden" id="memId" value="${memId }">
 
 	<table id="boardListTable" border="1" cellpadding="5" frame="hsides" rules="rows">
 		<tr>
@@ -53,20 +54,21 @@
 	</table>
 	
 	<div style="display: inline-block;">
-		<div id="pagingDiv">${boardPaging.pagingHTML }</div>
+	<!-- 	<div id="pagingDiv">${boardPaging.pagingHTML }</div>  -->
+	<div id="pagingDiv"></div>
 	</div>
 
 
 <script type="text/javascript">
 function boardPaging(pg) {
-	location.href = "boardList.do?pg=" + pg;
+	location.href = "boardListCheck.do?pg=" + pg;
 }
 
 function isLogin(id, seq, pg){
 	if(id == 'null') 
 		alert("먼저 로그인하세요");
-	//else
-		//location.href="boardView.jsp?seq=" + seq + "&pg="+pg;
+	else
+	location.href="boardViewCheck.do?seq=" + seq + "&pg="+pg;
 }
 </script>
 

@@ -26,10 +26,6 @@ public class GetBoardListService implements CommandProcess {
 		// 데이터 ( 1페이지 당 5개씩 꺼낼꺼임 )
 		int pg = Integer.parseInt(request.getParameter("pg"));
 
-		// 세션
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("memId");
-
 		// 페이징 처리 =>1페이지당 5개씩
 		int endNum = pg * 5;
 		int startNum = endNum - 4;
@@ -41,16 +37,16 @@ public class GetBoardListService implements CommandProcess {
 		// DB
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		List<BoardDTO> list = boardDAO.boardList(map);
-		//request.setAttribute("list", list);
-		
-		//list ->JSON 변환
+		// request.setAttribute("list", list);
+
+		// list ->JSON 변환
 		JSONObject json = new JSONObject();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-		
-		if(list != null) {
+
+		if (list != null) {
 			JSONArray array = new JSONArray();
-			
-			for(BoardDTO boardDTO : list) {
+
+			for (BoardDTO boardDTO : list) {
 				JSONObject temp = new JSONObject();
 				temp.put("seq", boardDTO.getSeq());
 				temp.put("id", boardDTO.getId());
@@ -64,16 +60,15 @@ public class GetBoardListService implements CommandProcess {
 				temp.put("pesq", boardDTO.getPesq());
 				temp.put("reply", boardDTO.getReply());
 				temp.put("hit", boardDTO.getHit());
-				//temp.put("logtime", boardDTO.getLogtime()+"");
+				// temp.put("logtime", boardDTO.getLogtime()+"");
 				temp.put("logtime", sdf.format(boardDTO.getLogtime()));
-				
+
 				array.add(temp);
-			}//for
+			} // for
 			json.put("list", array);
-			
-		}//if
-		
-		
+
+		} // if
+
 		// 페이징 처리
 		int totalA = boardDAO.getTotalA(); // 총 글수
 
@@ -83,15 +78,22 @@ public class GetBoardListService implements CommandProcess {
 		boardPaging.setPageSize(5);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
+
+		// 페이징 처리 json으로
+		json.put("pagingHTML", boardPaging.getPagingHTML() + ""); // StringBuffer -> String변환하여 보내야한다
+
 		
-		System.out.println(json); //확인차 찍어보는거
+		// 세션
+		HttpSession session = request.getSession();
+		String memId = (String) session.getAttribute("memId");
 
-		//request.setAttribute("list",list);
-		//request.setAttribute("boardPaging",boardPaging);
-		request.setAttribute("pg",pg);
-		request.setAttribute("id",id);
-		request.setAttribute("json",json);
+		//json.put("memId", memId);
 
+		System.out.println(json); // 확인차 찍어보는거
+
+		request.setAttribute("json", json);
+		request.setAttribute("pg", pg);
+		request.setAttribute("memId", memId);
 		return "/board/getBoardList.jsp";
 	}
 
