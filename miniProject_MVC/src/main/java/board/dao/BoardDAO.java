@@ -68,4 +68,20 @@ public class BoardDAO {
 		sqlSession.close();
 	}
 
+	public void boardDelete(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("boardSQL.boardDelete",seq);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+	public void boardUpdate(Map<String, String> map) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("boardSQL.boardUpdate",map);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
 }

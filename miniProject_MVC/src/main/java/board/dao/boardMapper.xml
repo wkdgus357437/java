@@ -2,26 +2,24 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="boardSQL">
- 	<insert id="boardWrite" parameterType="java.util.Map">
- 		insert into board(seq, id, name, email, subject, content, ref)
- 		values(seq_board.NEXTVAL
- 			, #{id}
- 			, #{name} 
- 			, #{email}
- 			, #{subject}
- 			, #{content}
- 			, seq_board.NEXTVAL)
- 	</insert>
- 	
- 	<select id="boardList" parameterType="java.util.Map" resultType="board">
- 	<!-- 
- 	select * from
- 	(select rownum rn, tt.*from
- 	(select * from board order by seq desc)tt
- 	)where rn between #{startNum} and #{endNum}
- 	-->  
- 	<!--   where rn >=between #{startNum} and &lt;= #{endNum}  &lt;= 은 <=의 효과-->
+<mapper namespace="boardSQL">
+	<insert id="boardWrite" parameterType="java.util.Map">
+		insert into board(seq, id,
+		name, email, subject, content, ref)
+		values(seq_board.NEXTVAL
+		, #{id}
+		,
+		#{name}
+		, #{email}
+		, #{subject}
+		, #{content}
+		, seq_board.NEXTVAL)
+	</insert>
+
+	<select id="boardList" parameterType="java.util.Map" resultType="board">
+		<!-- select * from (select rownum rn, tt.*from (select * from board order 
+			by seq desc)tt )where rn between #{startNum} and #{endNum} -->
+		<!-- where rn >=between #{startNum} and &lt;= #{endNum} &lt;= 은 <=의 효과 -->
  	
  	<![CDATA[  
  	select * from
@@ -29,19 +27,30 @@
  	(select * from board order by seq desc)tt
  	)where rn >= #{startNum} and rn <= #{endNum}
  	]]>
- 	<!-- <![CDATA[]]는  sql 문자 그대로 받아드림-->
- 	</select>
- 	
- 	<select id="getTotalA" resultType="int">
- 	select count(*) from board
- 	</select>
- 	
- 	<select id="getBoard" parameterType="int" resultType="board">
-	select * from board where seq = #{seq}
- 	</select>
- 	
- 	<update id="setHit" parameterType="int">
- 	update board set hit=hit+1 where seq = #{seq}
- 	</update>
- </mapper>
+		<!-- <![CDATA[]]는 sql 문자 그대로 받아드림 -->
+	</select>
+
+	<select id="getTotalA" resultType="int">
+		select count(*) from board
+	</select>
+
+	<select id="getBoard" parameterType="int" resultType="board">
+		select *
+		from board where seq = #{seq}
+	</select>
+
+	<update id="setHit" parameterType="int">
+		update board set hit=hit+1 where seq = #{seq}
+	</update>
+
+	<delete id="boardDelete" parameterType="int">
+		delete board where seq=#{seq}
+	</delete>
+
+	<update id="boardUpdate" parameterType="java.util.Map">
+		update board set subject=#{subject}
+		, content=#{content}
+		,logtime=sysdate where seq=#{seq}
+	</update>
+</mapper>
  
