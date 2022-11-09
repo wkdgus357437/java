@@ -38,8 +38,8 @@ function getKeyName(keyCode){
 		if(keyMap[i].code == keyCode){
 			return keyMap[i].name;
 		}
-	}
-}
+	}//for
+}// getKeyName
 $(function(){
 	// Javascript에서 event.KeyCode를 하면 각 키보드에서 해당하는 고유번호를 알 수 있다.
 	// 이 메소드가 jQuery에서는 event.which 으로 사용하게 된다.
@@ -47,7 +47,7 @@ $(function(){
 	$('#input > input[type="text"]').keydown(function(e){
 		$('#result').html(e.which + '번 키 눌러짐 &gt;&gt;' + getKeyName(e.which));
 	});
-});
+}); //function
 
 </script>
 
