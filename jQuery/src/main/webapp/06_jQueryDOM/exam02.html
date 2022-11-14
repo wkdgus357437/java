@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+div{
+width : 400px;
+height: 300px;
+padding-top:  20px;
+background-size: 100% 100%;
+}
+
+ul{
+padding:  10px 20px;
+background-color:  rgba(255,255,255,0.6)
+}
+</style>
+</head>
+<body>
+<div>
+	<ul id="menu">
+		<li class="item">
+			<a href="#">../img/img3.gif</a>
+		</li>
+		
+		<li class="item">
+			<a href="#">../img/img4.gif</a>
+		</li>
+		
+		<li class="item">
+			<a href="#">../img/img5.gif</a>
+		</li>
+	
+	
+	
+	</ul>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('.item > a').click(function(){
+		var index = $(this).parent().index();
+		console.log('index = ' + index);
+		
+		var img =['../img/img3.gif','../img/img4.gif','../img/img5.gif'];
+		$(this).parents(div).css({
+			'background' : 'url(' + img[index]+')'
+		}); // var img / this
+		
+	});// .item > a
+}); // $function
+</script>
+</body>
+</html>
